@@ -32,13 +32,13 @@ class ProductDetailViewController: UIViewController {
 	//--------------------------------------------------------------------------
 	// MARK: - ViewController life cycle
 	//--------------------------------------------------------------------------
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		self.title = item?.name
 		self.updateView()
-    }
+	}
 	
 	//--------------------------------------------------------------------------
 	// MARK: - Private functions
@@ -47,9 +47,28 @@ class ProductDetailViewController: UIViewController {
 	private func updateView() {
 		guard isViewLoaded == true, let item = self.item else { return }
 		
-		self.productImage.sd_setImage(with: item.url)
 		self.itemName.text = item.name
 		self.productDescription.text = item.itemDescription
+		
+		self.productImage.sd_setImage(with: item.url) { (image, error, cache, urls) in
+			if (error != nil) {
+				self.productImage.image = UIImage(named: "Placeholder")
+			} else {
+				self.addAnimation()
+				self.productImage.image = image
+			}
+		}
 	}
-
+	
+	private func addAnimation() {
+		let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+		
+		rotation.toValue = Double.pi * 2
+		rotation.duration = 0.25
+		rotation.isCumulative = true
+		rotation.repeatCount = 1
+		
+		productImage.layer.add(rotation, forKey: "rotationAnimation")
+	}
+	
 }

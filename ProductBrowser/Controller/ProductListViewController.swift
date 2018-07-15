@@ -25,15 +25,15 @@ class ProductListViewController: UIViewController {
 	// MARK: - properties
 	//--------------------------------------------------------------------------
 	
-	public let reachability : Reachability! = Reachability()
-	
-	var timer: Timer!
+	let reachability : Reachability! = Reachability()
 	
 	let dateFormatter: DateFormatter = {
-		let tmpFormatter = DateFormatter()
-		tmpFormatter.dateFormat = "hh:mm a"
-		return tmpFormatter
+		let formatter = DateFormatter()
+		formatter.dateFormat = "hh:mm a"
+		return formatter
 	}()
+	
+	var timer: Timer!
 	
 	var products: [Product] = []
 	private var selectedItem: Item?
@@ -92,7 +92,7 @@ class ProductListViewController: UIViewController {
 	
 	@objc func reachabilityChanged() {
 		if isReachable {
-			retry()
+			self.retry()
 		}
 	}
 	
@@ -143,6 +143,7 @@ class ProductListViewController: UIViewController {
 		
 		DispatchQueue.main.async {
 			self.tableView?.reloadData()
+			self.getTotalNumberOfItems()
 		}
 	}
 	
@@ -159,15 +160,19 @@ class ProductListViewController: UIViewController {
 	}
 	
 	private func getTotalNumberOfItems() {
-		guard let results = self.results.fetchedObjects as? [Item] else { return }
+		guard let results = self.results.fetchedObjects else { return }
 		
-		self.totalItem.text = "Total Items in the list: \(results.count ?? 0)"
+		DispatchQueue.main.async {
+			self.totalItem.text = "Total Items in the list: \(results.count )"
+		}
 	}
 	
 	private func showErrorAlert(fot title: String, message: String) {
 		let alertController = UIAlertController(title: title , message: message , preferredStyle: .alert)
 		let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+		
 		alertController.addAction(dismissAction)
+		
 		self.present(alertController, animated: true, completion: nil)
 	}
 }
@@ -200,7 +205,7 @@ extension ProductListViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductListCell.identifier, for: indexPath) as? ProductListCell else { return UITableViewCell() }
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductListCell.reuseIdentifier, for: indexPath) as? ProductListCell else { return UITableViewCell() }
 		
 		self.update(cell, at: indexPath)
 		
@@ -210,7 +215,7 @@ extension ProductListViewController: UITableViewDataSource {
 	func update(_ cell: ProductListCell, at indexPath: IndexPath) {
 		guard let item = self.results?.object(at: indexPath)
 			else { return }
-		cell.configureCell(for: item)
+		cell.configure(for: item)
 	}
 }
 

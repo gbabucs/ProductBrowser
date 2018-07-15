@@ -18,21 +18,19 @@ class ProductListCell: UITableViewCell {
 	@IBOutlet weak var productImage: UIImageView!
 	@IBOutlet weak var title: UILabel!
 	
-	//MARK: Static
 	
-	static let identifier = "ProductListCell"
+}
+
+extension ProductListCell: Cell {
 	
-	//MARK: Functions
-	
-	/**
-	Configure Cell
-	- parameters:
-	- item: Item object
-	*/
-	
-	func configureCell(for item: Item) {
-		title.text = item.name
-		productImage.sd_setImage(with: item.url)
+	func configure(for item: Item) {
+		self.title.text = item.name
+		self.productImage.sd_setImage(with: item.url) { (image, error, cache, urls) in
+			if (error != nil) {
+				self.productImage.image = UIImage(named: "Placeholder")
+			} else {
+				self.productImage.image = image
+			}
+		}
 	}
-	
 }

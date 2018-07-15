@@ -11,6 +11,8 @@
 		6F4E0E2920FB525C00CF258C /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E0E2720FB525C00CF258C /* Item+CoreDataClass.swift */; };
 		6F4E0E2A20FB525C00CF258C /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E0E2820FB525C00CF258C /* Item+CoreDataProperties.swift */; };
 		6F4E0E2C20FB547300CF258C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E0E2B20FB547300CF258C /* CoreDataManager.swift */; };
+		6F4E0E3620FB8B8300CF258C /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E0E3520FB8B8300CF258C /* Cell.swift */; };
+		6F4E0E3920FBB75800CF258C /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E0E3820FBB75800CF258C /* ImageViewExtension.swift */; };
 		DD9F9C91D038D64E713ED277 /* Pods_ProductBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5608600BD14461041C319E /* Pods_ProductBrowser.framework */; };
 		E741592D20F95101005610AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741592C20F95101005610AD /* AppDelegate.swift */; };
 		E741592F20F95101005610AD /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741592E20F95101005610AD /* ProductListViewController.swift */; };
@@ -29,6 +31,8 @@
 		6F4E0E2720FB525C00CF258C /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "/Users/dev/Downloads/ProductBrowser/ProductBrowser/Item+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		6F4E0E2820FB525C00CF258C /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "/Users/dev/Downloads/ProductBrowser/ProductBrowser/Item+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		6F4E0E2B20FB547300CF258C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		6F4E0E3520FB8B8300CF258C /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		6F4E0E3820FBB75800CF258C /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		82FFCEED9C80C533B95786F3 /* Pods-ProductBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProductBrowser/Pods-ProductBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		C596367AC5F6A5B13EA4889A /* Pods-ProductBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductBrowser/Pods-ProductBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		E741592920F95101005610AD /* ProductBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6F4E0E3420FB8B7300CF258C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6F4E0E3520FB8B8300CF258C /* Cell.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		6F4E0E3720FBB74500CF258C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6F4E0E3820FBB75800CF258C /* ImageViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D44A1DEE7F80563B3BC0592F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +174,8 @@
 		E741592B20F95101005610AD /* ProductBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				6F4E0E3720FBB74500CF258C /* Extensions */,
+				6F4E0E3420FB8B7300CF258C /* Protocol */,
 				6F4E0E3320FB841F00CF258C /* View */,
 				6F4E0E3020FB83A600CF258C /* Service */,
 				6F4E0E2F20FB838400CF258C /* Model */,
@@ -294,7 +316,9 @@
 				E741594420FA14D4005610AD /* ProductDetailViewController.swift in Sources */,
 				E741592D20F95101005610AD /* AppDelegate.swift in Sources */,
 				E741594620FA1677005610AD /* ServiceManager.swift in Sources */,
+				6F4E0E3620FB8B8300CF258C /* Cell.swift in Sources */,
 				E741594820FA18FA005610AD /* Product.swift in Sources */,
+				6F4E0E3920FBB75800CF258C /* ImageViewExtension.swift in Sources */,
 				6F4E0E2C20FB547300CF258C /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
