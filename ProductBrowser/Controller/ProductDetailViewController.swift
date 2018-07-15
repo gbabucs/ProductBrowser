@@ -64,7 +64,7 @@ class ProductDetailViewController: UIViewController {
 		let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
 		
 		rotation.toValue = Double.pi * 2
-		rotation.duration = 0.25
+		rotation.duration = 1.0
 		rotation.isCumulative = true
 		rotation.repeatCount = 1
 		

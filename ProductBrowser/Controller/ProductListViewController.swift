@@ -68,6 +68,7 @@ class ProductListViewController: UIViewController {
 			self.showErrorAlert(fot: "No Internet Connection", message: "Please try again later")
 		}
 		
+		self.updateView()
 		self.attemptFetch()
 		self.retry()
 		self.startWatchingReachability()
@@ -135,6 +136,11 @@ class ProductListViewController: UIViewController {
 		}
 		
 		self.attemptFetch()
+	}
+	
+	private func updateView() {
+		self.globalHeader.layer.borderWidth = 2.0
+		self.globalHeader.layer.borderColor = UIColor.black.cgColor
 	}
 	
 	private func attemptFetch() {
@@ -219,6 +225,9 @@ extension ProductListViewController: UITableViewDataSource {
 	}
 }
 
+//--------------------------------------------------------------------------
+// MARK: - NSFetchedResultsControllerDelegate
+//--------------------------------------------------------------------------
 
 extension ProductListViewController: NSFetchedResultsControllerDelegate {
 	
